@@ -1,0 +1,471 @@
+﻿/* ============================================
+   FIREFLY DESIGNS â€” Static Redirect Page
+   ============================================ */
+
+:root {
+    --neon-pink: #ff6bf5;
+    --neon-purple: #c084fc;
+    --neon-blue: #67e8f9;
+    --neon-green: #86efac;
+    --neon-yellow: #fde68a;
+    --neon-orange: #fdba74;
+
+    --bg-dark: #0a0a1a;
+    --bg-card: rgba(255, 255, 255, 0.04);
+    --bg-card-hover: rgba(255, 255, 255, 0.08);
+
+    --text-primary: #f0f0ff;
+    --text-secondary: #a0a0c0;
+    --text-muted: #6b6b8a;
+
+    --gradient-primary: linear-gradient(135deg, var(--neon-pink), var(--neon-purple), var(--neon-blue));
+    --gradient-glow: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+    --gradient-discord: linear-gradient(135deg, #5865F2, #7c6aef);
+
+    --container-width: 600px;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(192, 132, 252, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 245, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 40% 80%, rgba(103, 232, 249, 0.1) 0%, transparent 40%);
+    animation: bgFloat 20s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes bgFloat {
+    0%, 100% { transform: translateY(0px); opacity: 0.4; }
+    50% { transform: translateY(-10px); opacity: 0.6; }
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ============================================
+   FIREFLIES BACKGROUND
+   ============================================ */
+
+.fireflies {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.firefly {
+    position: absolute;
+    border-radius: 50%;
+    animation: float linear infinite, pulse ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) translateX(0); }
+    25% { transform: translateY(75vh) translateX(30px); }
+    50% { transform: translateY(50vh) translateX(-20px); }
+    75% { transform: translateY(25vh) translateX(40px); }
+    100% { transform: translateY(-10vh) translateX(10px); }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.2; box-shadow: 0 0 4px currentColor; }
+    100% { opacity: 0.8; box-shadow: 0 0 12px currentColor, 0 0 24px currentColor; }
+}
+
+/* ============================================
+   REDIRECT HERO
+   ============================================ */
+
+.redirect-hero {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px 40px;
+    text-align: center;
+}
+
+.hero-glow {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(192, 132, 252, 0.12) 0%, rgba(255, 107, 245, 0.06) 40%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.redirect-content {
+    position: relative;
+    z-index: 2;
+    max-width: var(--container-width);
+}
+
+.redirect-badge {
+    display: inline-block;
+    padding: 10px 28px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--neon-purple);
+    background: rgba(192, 132, 252, 0.1);
+    border: 1px solid rgba(192, 132, 252, 0.2);
+    margin-bottom: 24px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.redirect-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    color: var(--text-secondary);
+    animation: fadeInUp 0.8s ease-out 0.15s both;
+}
+
+.title-line {
+    display: block;
+}
+
+.title-line.accent {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 30px rgba(255, 107, 245, 0.3));
+}
+
+.redirect-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 440px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   SECTION DIVIDER
+   ============================================ */
+
+.section-divider {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: var(--container-width);
+    padding: 0 24px;
+    margin: 8px 0 40px;
+}
+
+.divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(192, 132, 252, 0.3), transparent);
+}
+
+.divider-icon {
+    font-size: 1.2rem;
+    opacity: 0.7;
+}
+
+/* ============================================
+   DISCORD SERVER CARD
+   ============================================ */
+
+.discord-section {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: var(--container-width);
+    padding: 0 24px 60px;
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.discord-card {
+    background: rgba(30, 30, 50, 0.7);
+    border: 1px solid rgba(88, 101, 242, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.discord-card:hover {
+    border-color: rgba(88, 101, 242, 0.35);
+    box-shadow: 0 8px 40px rgba(88, 101, 242, 0.15);
+}
+
+.discord-banner {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+}
+
+.discord-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.discord-body {
+    padding: 0 28px 32px;
+    position: relative;
+}
+
+.discord-logo-wrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid rgba(30, 30, 50, 0.9);
+    overflow: hidden;
+    margin-top: -40px;
+    margin-bottom: 12px;
+    background: var(--bg-dark);
+}
+
+.discord-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.discord-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.discord-tagline {
+    font-size: 0.95rem;
+    color: var(--neon-pink);
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.discord-tagline strong {
+    color: var(--neon-purple);
+    letter-spacing: 1px;
+}
+
+.discord-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.discord-note {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 24px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    border-left: 2px solid rgba(192, 132, 252, 0.3);
+}
+
+.discord-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.age-badge {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--neon-orange);
+    background: rgba(253, 186, 116, 0.1);
+    border: 1px solid rgba(253, 186, 116, 0.2);
+    padding: 6px 14px;
+    border-radius: 8px;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    border-radius: 14px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.btn-primary {
+    background: var(--gradient-glow);
+    color: #fff;
+    box-shadow: 0 4px 24px rgba(255, 107, 245, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 40px rgba(255, 107, 245, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.btn-lg {
+    padding: 16px 40px;
+    font-size: 1.05rem;
+    border-radius: 16px;
+}
+
+.btn-discord {
+    background: var(--gradient-discord);
+    color: #fff;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 20px rgba(88, 101, 242, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-discord:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 36px rgba(88, 101, 242, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 32px 24px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: auto;
+}
+
+.footer-glow {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 150px;
+    background: radial-gradient(ellipse, rgba(255, 107, 245, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.footer-copy {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    position: relative;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 640px) {
+    .redirect-hero {
+        padding: 60px 20px 30px;
+    }
+
+    .redirect-subtitle {
+        font-size: 1rem;
+    }
+
+    .discord-section {
+        padding: 0 16px 40px;
+    }
+
+    .discord-banner {
+        height: 140px;
+    }
+
+    .discord-body {
+        padding: 0 20px 24px;
+    }
+
+    .discord-name {
+        font-size: 1.35rem;
+    }
+
+    .discord-footer {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .age-badge {
+        align-self: flex-start;
+    }
+
+    .btn-discord {
+        justify-content: center;
+    }
+
+    .btn-lg {
+        padding: 14px 32px;
+        font-size: 1rem;
+    }
+}
