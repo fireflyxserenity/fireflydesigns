@@ -338,6 +338,38 @@ a {
 }
 
 /* ============================================
+   ADS SECTION
+   ============================================ */
+
+.ads-section {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: var(--container-width);
+    padding: 0 24px 60px;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.ads-container {
+    background: rgba(30, 30, 50, 0.5);
+    border: 1px solid rgba(192, 132, 252, 0.15);
+    border-radius: 16px;
+    padding: 20px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.ads-container:hover {
+    border-color: rgba(192, 132, 252, 0.3);
+    box-shadow: 0 8px 32px rgba(192, 132, 252, 0.1);
+}
+
+.adsbygoogle {
+    display: block !important;
+}
+
+/* ============================================
    BUTTONS
    ============================================ */
 
